@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAN B</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" href="css/reset.css" type="text/css">
+    
+    <!-- 구글폰트:notosanskr -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet"> 
+    
+    <link rel="stylesheet" href="css/common.css" type="text/css">
+    <link rel="stylesheet" href="css/header.css" type="text/css">
+    <link rel="stylesheet" href="css/title.css" type="text/css">
+    <link rel="stylesheet" href="css/main.css" type="text/css">
+    <link rel="stylesheet" href="css/responsive.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+    <script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="slick/slick.min.js"></script>
+    <script>
+        $(document).ready(
+            function(){
+                $('.drowingSlide').slick({
+                    dots: true,
+                    infinite: true,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    autoplaySpeed: 3000,
+
+                });
+             
+                //-------all menu 클릭시--------
+            $("header .wrap a.allmenu").click(function(){
+                  //x변환
+                $(this).toggleClass("x");
+                 //gnb 보이게
+                $("header .wrap ul.gnb").toggleClass("moveShow");
+                    return false;
+                });  
+            // 메뉴 a클릭시 메뉴 사라지게
+            $("header .wrap ul.gnb li a").click(function(){
+                $("header .wrap ul.gnb").removeClass("moveShow");
+                $("header .wrap a.allmenu").removeClass("x");
+                    return false;
+                });  
+            // 모바일버전 첫 화면 화살표 클릭시 내려가게
+            $("#title .wrap > span a").click(function(){
+            $("html,body").animate({scrollTop:$("#title").height()},700);
+                return false;
+                }
+            );
+   
+            // 메뉴 a클릭시 해당 위치로 이동
+            $("header ul.gnb li:nth-child(1) a").click(function(){
+                $("html,body").animate({scrollTop:"0px"},700);
+                return false;
+                }
+            );
+            $("header ul.gnb li:nth-child(2) a").click(function(){
+                $("html,body").animate({scrollTop:$("#title").height()},700);
+                return false;
+                }
+            );
+            $("header ul.gnb li:nth-child(3) a").click(function(){
+                $("html,body").animate({scrollTop:$("#title").height()+$("#skill").height()},700);
+                return false;
+                }
+            );
+            $("header ul.gnb li:nth-child(4) a").click(function(){
+                $("html,body").animate({scrollTop:$("#title").height()+$("#skill").height()+$("#work").height()},700);
+                return false;
+                }
+            );
+            $("header ul.gnb li:nth-child(5) a").click(function(){
+                $("html,body").animate({scrollTop:$("#title").height()+$("#skill").height()+$("#work").height()+$("#about").height()},700);
+                return false;
+                }
+            );
+            // top 버튼 클릭시 맨위로
+            $("a.top").hide();
+                $("a.top").click(function(){
+                    $("html,body").animate({scrollTop:"0px"},1000);
+                    return false;
+                });
+            
+            if($(window).width() > 768) {
+                $(window).scroll(function(){   
+                    
+                    //대메뉴 h2 스크롤시 애니메이션 클래스 붙이기
+                     var a = $("#title").height()+$("#skill").height();
+                     if($(window).scrollTop()>=$("#title").height()-400){ 
+                        $("#skill .wrap h2").addClass("slideUp");
+                        $("#skill .skill_02 ul li").addClass("slideUp");
+
+                    }
+                     if($(window).scrollTop()>=a-400){ 
+                        $("#work .wrap h2").addClass("slideUp");
+                    }
+                    if($(window).scrollTop()>=a+$("#work").height()-400){ 
+                        $("#about .wrap h2").addClass("slideUp");
+                    }
+                    // 스크롤시 skill부분 글자 애니메이션 클래스
+                    if($(window).scrollTop()>=$("#title").height()-200){ 
+                        $("#skill .skill_01 ul:nth-child(1) li").addClass("showSkill"); 
+                    }
+                    if($(window).scrollTop()>=$("#title").height()+$("#skill .skill_01 ul:nth-child(1)").height()-400){ 
+                        $("#skill .skill_01 ul:nth-child(2) li").addClass("showSkill"); 
+                        $("#skill .skill_01 ul:nth-child(1) li").removeClass("showSkill");  
+                    }
+                    if($(window).scrollTop()>=$("#title").height()+$("#skill .skill_01 ul:nth-child(1)").height()+$("#skill .skill_01 ul:nth-child(2)").height()-400){ 
+                        $("#skill .skill_01 ul:nth-child(3) li").addClass("showSkill"); 
+                        $("#skill .skill_01 ul:nth-child(2) li").removeClass("showSkill");  
+                    }
+                    if($(window).scrollTop()>=$("#title").height()+$("#skill .skill_01 ul:nth-child(1)").height()+$("#skill .skill_01 ul:nth-child(2)").height()+$("#skill .skill_01 ul:nth-child(3)").height()-400){ 
+                        $("#skill .skill_01 ul:nth-child(4) li").addClass("showSkill"); 
+                        $("#skill .skill_01 ul:nth-child(3) li").removeClass("showSkill");  
+                    }
+                     //스크롤시 work 부분 애니메이션 클래스 추가
+                    if($(window).scrollTop()>=a-200){ 
+                        $("#work .list:nth-of-type(2) img").addClass("leftShow");
+                        $("#work .list:nth-child(2) ul").addClass("rightShow");
+                    }
+                    if($(window).scrollTop()>=a+$("#work .list:nth-of-type(2)").height()-200){ 
+                        $("#work .list:nth-of-type(3) img").addClass("leftShow");
+                        $("#work .list:nth-child(3) ul").addClass("rightShow");
+                    }
+                    if($(window).scrollTop()>=a+$("#work .list:nth-of-type(2)").height()+$("#work .list:nth-of-type(3)").height()-200){ 
+                        $("#work .list:nth-of-type(4) img").addClass("leftShow");
+                        $("#work .list:nth-child(4) ul").addClass("rightShow");
+                    }
+                    if($(window).scrollTop()>=a+$("#work .list:nth-of-type(2)").height()+$("#work .list:nth-of-type(3)").height()+$("#work .list:nth-of-type(4)").height()-200){
+                        $("#work .list:nth-of-type(5) img").addClass("leftShow");
+                        $("#work .list:nth-child(5) ul").addClass("rightShow");
+                    }
+                    if($(window).scrollTop()>=a+$("#work .list:nth-of-type(2)").height()+$("#work .list:nth-of-type(3)").height()+$("#work .list:nth-of-type(4)").height()+$("#work .list:nth-of-type(5)").height()-200){  
+                        $("#work .list:nth-of-type(6) img").addClass("leftShow");
+                        $("#work .list:nth-child(6) ul").addClass("rightShow");
+                    }
+                    if($(window).scrollTop()>=a+$("#work .list:nth-of-type(2)").height()+$("#work .list:nth-of-type(3)").height()+$("#work .list:nth-of-type(4)").height()+$("#work .list:nth-of-type(5)").height()+$("#work .list:nth-of-type(6)").height()-200){ 
+                        $("#work .list:nth-of-type(7) img").addClass("leftShow");
+                        $("#work .list:nth-child(7) ul").addClass("rightShow");
+                    }
+                    if($(window).scrollTop()>=a+$("#work .list:nth-of-type(2)").height()+$("#work .list:nth-of-type(3)").height()+$("#work .list:nth-of-type(4)").height()+$("#work .list:nth-of-type(5)").height()+$("#work .list:nth-of-type(6)").height()+$("#work .list:nth-of-type(7)").height()-200){ 
+                        $("#work .list:nth-of-type(8) img").addClass("leftShow");
+                        $("#work .list:nth-child(8) ul").addClass("rightShow");
+                    } 
+                    if($(window).scrollTop()>=a+$("#work .list:nth-of-type(2)").height()+$("#work .list:nth-of-type(3)").height()+$("#work .list:nth-of-type(4)").height()+$("#work .list:nth-of-type(5)").height()+$("#work .list:nth-of-type(6)").height()+$("#work .list:nth-of-type(7)").height()+$("#work .list:nth-of-type(8)").height()-200){ 
+                        $("#work .list ul.drowingSlide img").addClass("leftShow");
+                        $("#work .list:nth-child(9) ul").addClass("rightShow");
+                    } 
+                    //about 부분 애니메이션
+                    if($(window).scrollTop()>=a+$("#work").height()-300){ 
+                        $("#about .introduce h3").addClass("subjectShow");
+                        $("#about .introduce p:nth-child(2)").addClass("subjectShow");
+                        $("#about .introduce p:nth-child(3)").addClass("subjectShow");
+                        $("#about .introduce p:nth-child(4)").addClass("subjectShow");
+                    } 
+                    if($(window).scrollTop()>=a+$("#work").height()+$("#about .introduce").height()-400){ 
+                        $("#about .list ul").addClass("subjectShow");
+                        $("#about .list img").addClass("subjectShow");
+                    }
+                    //top
+                    if($(window).scrollTop()>$("#title").height()+$("#skill").height()+$("#work").height()-3000){
+                            $("a.top").fadeIn(500);
+                        }
+                    //top 버튼 들어가게
+                    if($(window).scrollTop()<$("#title").height()+$("#skill").height()+2000){
+                            $("a.top").fadeOut(500);
+                        }
+                });
+            }
+            // 모바일 버전
+                if($(window).width() < 769) {
+                    $(window).scroll(function(){   
+                           //대메뉴 h2 스크롤시 애니메이션 클래스 붙이기
+                     var a = $("#title").height()+$("#skill").height();
+                     if($(window).scrollTop()>=$("#title").height()-200){ 
+                        $("#skill .wrap h2").addClass("slideUp");
+                    }
+                     if($(window).scrollTop()>=a-200){ 
+                        $("#work .wrap h2").addClass("slideUp");
+                    }
+                    if($(window).scrollTop()>=a+$("#work").height()-200){ 
+                        $("#about .wrap h2").addClass("slideUp");
+                    }
+                    // 스크롤시 skill부분 글자 애니메이션 클래스
+                    if($(window).scrollTop()>=$("#title").height()+$("#skill .wrap").height()-200){ 
+                        $("#skill .skill_01 ul:nth-child(1) li").addClass("showSkill"); 
+                    }
+                    if($(window).scrollTop()>=$("#title").height()+$("#skill .wrap").height()+$("#skill .skill_01 ul:nth-child(1)").height()-400){ 
+                        $("#skill .skill_01 ul:nth-child(2) li").addClass("showSkill"); 
+                        $("#skill .skill_01 ul:nth-child(1) li").removeClass("showSkill");  
+                    }
+                    if($(window).scrollTop()>=$("#title").height()+$("#skill .wrap").height()+$("#skill .skill_01 ul:nth-child(1)").height()+$("#skill .skill_01 ul:nth-child(2)").height()-400){ 
+                        $("#skill .skill_01 ul:nth-child(3) li").addClass("showSkill"); 
+                        $("#skill .skill_01 ul:nth-child(2) li").removeClass("showSkill");  
+                    }
+                     //스크롤시 work 부분 애니메이션 클래스 추가
+                    if($(window).scrollTop()>=a+$("#work .list:nth-child(2)").height()-200){ 
+                        $("#work .list:nth-of-type(2) img").addClass("leftShow");
+                        $("#work .list:nth-child(2) ul").addClass("rightShow");
+                    }
+                    if($(window).scrollTop()>=a+$("#work .list:nth-child(2)").height()+$("#work .list:nth-child(3)").height()-200){ 
+                        $("#work .list:nth-of-type(3) img").addClass("leftShow");
+                        $("#work .list:nth-child(3) ul").addClass("rightShow");
+                    }
+                    if($(window).scrollTop()>=a+$("#work .list:nth-child(2)").height()+$("#work .list:nth-child(3)").height()+$("#work .list:nth-child(4)").height()-200){ 
+                        $("#work .list:nth-of-type(4) img").addClass("leftShow");
+                        $("#work .list:nth-child(4) ul").addClass("rightShow");
+                    }
+                    if($(window).scrollTop()>=a+$("#work .list:nth-child(2)").height()+$("#work .list:nth-child(3)").height()+$("#work .list:nth-child(4)").height()+$("#work .list:nth-child(5)").height()-200){ 
+                        $("#work .list:nth-of-type(5) img").addClass("leftShow");
+                        $("#work .list:nth-child(5) ul").addClass("rightShow");
+                    }
+                    if($(window).scrollTop()>=a+$("#work .list:nth-child(2)").height()+$("#work .list:nth-child(3)").height()+$("#work .list:nth-child(4)").height()+$("#work .list:nth-child(5)").height()+$("#work .list:nth-child(6)").height()-200){ 
+                        $("#work .list:nth-of-type(6) img").addClass("leftShow");
+                        $("#work .list:nth-child(6) ul").addClass("rightShow");
+                    }
+                    if($(window).scrollTop()>=a+$("#work .list:nth-child(2)").height()+$("#work .list:nth-child(3)").height()+$("#work .list:nth-child(4)").height()+$("#work .list:nth-child(5)").height()+$("#work .list:nth-child(6)").height()+$("#work .list:nth-child(7)").height()-200){ 
+                        $("#work .list:nth-of-type(7) img").addClass("leftShow");
+                        $("#work .list:nth-child(7) ul").addClass("rightShow");
+                    }
+                    if($(window).scrollTop()>=a+$("#work .list:nth-child(2)").height()+$("#work .list:nth-child(3)").height()+$("#work .list:nth-child(4)").height()+$("#work .list:nth-child(5)").height()+$("#work .list:nth-child(6)").height()+$("#work .list:nth-child(7)").height()+$("#work .list:nth-child(8)").height()-200){ 
+                        $("#work .list:nth-of-type(8) img").addClass("leftShow");
+                        $("#work .list:nth-child(8) ul").addClass("rightShow");
+                    }
+                    if($(window).scrollTop()>=a+$("#work .list:nth-child(2)").height()+$("#work .list:nth-child(3)").height()+$("#work .list:nth-child(4)").height()+$("#work .list:nth-child(5)").height()+$("#work .list:nth-child(6)").height()+$("#work .list:nth-child(7)").height()+$("#work .list:nth-child(8)").height()+$("#work .list:nth-child(9)").height()-200){ 
+                        $("#work .list ul.drowingSlide img").addClass("leftShow");
+                        $("#work .list:nth-child(9) ul").addClass("rightShow");
+                    } 
+            
+                    //about 부분 애니메이션
+                    if($(window).scrollTop()>=a+$("#work").height()+$("#about .wrap").height()-300){ 
+                        $("#about .introduce h3").addClass("subjectShow");
+                        $("#about .introduce p:nth-child(2)").addClass("subjectShow");
+                        $("#about .introduce p:nth-child(3)").addClass("subjectShow");
+                        $("#about .introduce p:nth-child(4)").addClass("subjectShow");
+                    } 
+                    if($(window).scrollTop()>=a+$("#work").height()+$("#about .introduce").height()+$("#about .list").height()-500){ 
+                        $("#about .list ul").addClass("subjectShow");
+                        $("#about .list img").addClass("subjectShow");
+                    }
+                    //top
+                    if($(window).scrollTop()>$("#title").height()+$("#skill").height()+$("#work").height()-3000){
+                            $("a.top").fadeIn(500);
+                        }
+                    //top 버튼 들어가게
+                    if($(window).scrollTop()<$("#title").height()+$("#skill").height()+2000){
+                            $("a.top").fadeOut(500);
+                        }
+                    });  
+
+
+                }
+            });
+
+    </script>
+<style>
+  .slick-prev, .slick-next{
+    display: none;
+  }
+  .slick-dots{
+      display: flex;
+      flex-direction: initial !important;
+      justify-content: center;
+  }
+</style>
+</head>
+<body>
+    <header>
+        <div class="wrap">
+            <h1 class="h1"><a href="">DANB</a></h1>
+            <a href="" class="allmenu">전체메뉴보기<span></span></a>
+            <ul class="gnb">
+                <li><a href="#title">HOME</a></li>
+                <li><a href="#skill">SKILL</a></li>
+                <li><a href="#work">WORK</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </div>
+    </header>
+    <!-- 타이틀영역 -->
+    <div id="title">
+        <div class="wrap">
+            <ul>
+                <li class="t_1">
+                    <p>D</p><p>A</p><p>N</p><p>B</p><p>'s</p>
+                </li>
+                <li class="t_2">   
+                     <p>P</p><p>O</p><p>R</p><p>T</p><p>F</p><p>O</p><p>L</p><p>I</p><p>O</p>
+                </li>
+            </ul>
+            <span><a href="">스크롤 내리기</a></span>
+        </div>
+        <div class="circles">
+            <ul>
+                <li class="circle"></li>
+                <li class="circle"></li>
+                <li class="circle"></li>
+            </ul>
+        </div>
+    </div>   
+            
+    <!-- 메인영역 -->
+        <main>
+        <!-- skill  -->
+            <section id="skill">
+                <div class="wrap">
+                    <h2 class="">SKILLS</h2>
+                </div>
+                <div class="skill_01">
+                    <ul>
+                        <li>한국형 웹 콘텐츠 접근성 지침 준수</li>
+                        <li>시멘틱 마크업을 통한 의미있는 구조 설계</li>
+                        <li>반응형 & 적응형 웹사이트 구축</li>
+                        <li>SASS를 이용한 프리프로세싱</li>
+                    </ul>
+                    <ul>
+                        <li>jQuery를 활용한</li>
+                        <li>특수효과 및 애니메이션 구현</li>
+                        <li>슬라이드, 메뉴, 스크롤 등</li>
+                    </ul>
+                    <ul>
+                        <li>알 드라이브, 파일질라를 통한 서버 간의 파일 송수신</li>
+                        <li>ibis painting을 활용한 드로잉, 일러스트, 페인팅, <br>
+                            사진보정 및 합성, 웹페이지 시안, ui/ux디자인 제작</li>
+                        <li>깃허브 관리</li>
+                        <li>cafe24 쇼핑몰 구축, 관리</li>
+                    </ul>
+                </div>
+                <div class="skill_02">
+                    <ul>
+                        <li>html5 <br> css3</li>
+                    </ul>
+                    <ul>
+                        <li>java<br>script</li>
+                    </ul>
+                    <ul>
+                        <li>other</li>
+                    </ul>
+                </div>
+            </section>
+        <!-- WORK -->
+            <section id="work">
+                <div class="wrap">
+                     <h2 class="">WORK</h2>
+                </div>
+                <div class="list">
+                    <img src="img/work_01.jpg" alt="">
+                    <ul>
+                        <li><h2>한진칼</h2></li>
+                        <li><h3>#CSS #HTML</h3></li>
+                        <li><span><a href="https://wk2113.github.io/wk2113-pf1-hanjinkal/">WEB SITE</span></a></li>
+                    </ul>
+                </div>
+                <div class="list">
+                    <img src="img/work_01.jpg" alt="">
+                    <ul>
+                        <li><h2>투썸플레이스</h2></li>
+                        <li><h3>#CSS #HTML</h3></li>
+                        <li><span><a href="https://wk2113.github.io/pf3-twosomeplace/">WEB SITE</a></span></li>
+                    </ul>
+                </div>
+                <div class="list">
+                    <img src="img/work_01.jpg" alt="">
+                    <ul>
+                        <li><h2>삼성전자</h2></li>
+                        <li><h3>#CSS #HTML #반응형 #애니메이션 #제이쿼리 #서브페이지 </h3></li>
+                        <li><span><a href="https://wk2113.github.io/pf5-Samsung/">WEB SITE</a></span></li>
+                    </ul>
+                </div>
+                <div class="list">
+                    <img src="img/work_01.jpg" alt="">
+                    <ul>
+                        <li><h2>브랜드엑스</h2></li>
+                        <li><h3>#CSS #HTML #반응형 #애니메이션 #제이쿼리</h3></li>
+                        <li><span><a href="https://wk2113.github.io/pf6-brandx/">WEB SITE</a></span></li>
+                    </ul>
+                </div>
+                <div class="list">
+                    <img src="img/work_01.jpg" alt="">
+                    <ul>
+                        <li><h2>윤현몰</h2></li>
+                        <li><h3>#CSS #HTML #반응형 #애니메이션 #제이쿼리 #부트스트랩</h3></li>
+                        <li><span><a href="https://wk2113.github.io/pf7-younhyunmall/">WEB SITE</a></span></li>
+                    </ul>
+                </div>
+                <div class="list">
+                    <img src="img/work_01.jpg" alt="">
+                    <ul>
+                        <li><h2>hersteller</h2></li>
+                        <li><h3>#CSS #HTML #반응형 #애니메이션 #제이쿼리</h3></li>
+                        <li><span><a href="http://comm5.woobi.co.kr/pf8-hersteller/">WEB SITE</a></span></li>
+                    </ul>
+                </div>
+                <div class="list">
+                    <img src="img/work_01.jpg" alt="">
+                    <ul>
+                        <li><h2>픈픈 fnfn</h2></li>
+                        <li><h3>#CSS #HTML #반응형 #애니메이션 #제이쿼리</h3></li>
+                        <li><span><a href="https://wk2113.github.io/pf9-fnfn/">WEB SITE</a></span></li>
+                    </ul>
+                </div>
+                <div class="list">
+                    <ul class="drowingSlide">
+                        <li><img src="img/drowing(1).jpeg" alt=""></li>
+                        <li><img src="img/drowing(2).jpeg" alt=""></li>
+                        <li><img src="img/drowing(3).jpeg" alt=""></li>
+                        <li><img src="img/drowing(4).jpeg" alt=""></li>
+                        <li><img src="img/drowing(5).jpeg" alt=""></li>
+                        <li><img src="img/drowing(6).jpeg" alt=""></li>
+                        <li><img src="img/drowing(7).jpeg" alt=""></li>
+                    </ul>
+                    <ul>
+                        <li><h2>DROWING</h2></li>
+                        <li><h3>#ibis painting #일러스트 #드로잉 #페인팅 #유화</h3></li>
+                    </ul>
+                </div>
+            </section>
+        <!-- about -->
+            <section id="about">
+                <div class="wrap">
+                    <h2 class="">ABOUT</h2>
+                </div>
+                <div class="introduce">
+                    <h3 class="h3"><img src="img/introduce01.png" alt="">강한 <span>책임감</span>과 <span>열정</span>을 지닌 신입 웹 퍼블리셔 이단비 입니다<img src="img/introduce02.png" alt=""></h3>
+                    <p>안녕하세요. 강한 책임감과 열정을 지닌 신입 웹 퍼블리셔 이단비 입니다.</p>
+                    <p>웹퍼블리셔로 일하며 더 많은 것을 보고 배우며 꾸준히 성장하는 전문가로 거듭나고 싶습니다.</p>
+                    <p>그러기 위해 작은 일이라도 항상 고민하고 탐색하며 배우는 자세로 열심히 노력할 것입니다.</p>
+                </div>
+                <div class="list">
+                    <ul>
+                        <span>NAME</span>
+                        <li>이단비 LEE DAN BI</li>
+                        <span>AGE</span>
+                        <li>1997.09.20</li>
+                        <span>UNIV</span>
+                        <li>경기대 서양화 미술경영학과 전공</li>
+                        <span>PESIDENCE</span>
+                        <li>서울시 양천구 신월동</li>
+                        <span>EMAIL</span>
+                        <li>danb970920@gmail.com</li>
+                    </ul>
+                        <img src="img/me.jpg" alt="">
+                </div>
+
+            </section>
+        <!--contact -->
+            <section id="contact">
+                <div class="wrap">
+                    <ul>
+                        <li><h2>CONTACT</h2></li>
+                        <li><p><span>Phone:</span>010-5585-7793</p></li>
+                        <li><p><span>Email:</span>danb970920@gmail.com</p></li>
+                    </ul>          
+                </div>
+                <div class="squares">
+                    <ul>
+                        <li class="square"></li>
+                        <li class="square"></li>
+                        <li class="square"></li>
+                        <li class="square"></li>
+                        <li class="square"></li>
+                        <li class="square"></li>
+                        <li class="square"></li>
+                        <li class="square"></li>
+                        <li class="square"></li>
+                        <li class="square"></li>
+                        <li class="square"></li>
+                        <li class="square"></li>
+                        <li class="square"></li>
+                        <li class="square"></li>
+                        <li class="square"></li>
+                        <li class="square"></li>
+                        <a href="" class="top">위로 가기</a>
+                    </ul>
+                </div>
+            </section>
+</body>
+</html>
