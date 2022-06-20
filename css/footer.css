@@ -1,0 +1,62 @@
+footer{
+
+  height: 300px;
+  border-top: 1px solid;
+  flex-direction: column;
+  justify-content: center;
+  display: flex;
+}
+footer .wrap{
+
+  position: absolute;
+  left: 15%;
+}
+footer ul.fnb{
+
+  display: flex;
+  gap: 15px;
+}
+footer li a{
+
+}
+footer address{
+
+  line-height: 2;
+  margin-top: 26px;
+  font-size: 13px;
+}
+footer address p{
+
+  color: #4e8484;
+}
+footer p.copyright{
+    
+  color: #929191;
+  font-size: 13px;
+  margin-top: 19px;
+    
+}
+/* 위로 가기 */
+a.top{
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: #4e8484;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right:30px;
+  bottom:110px;
+  font-size:0;
+}
+a.top::before{
+  content: "";
+  width: 16px;
+  height: 16px;
+  border:2px solid #eee;
+  border-left:transparent;
+  border-bottom: transparent;
+  display:block;
+  transform: translateY(5px) rotate(-45deg);
+}

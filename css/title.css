@@ -1,0 +1,213 @@
+#title{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  box-sizing: border-box;
+  border-bottom: 1px solid #3a3a1f57;
+}
+#title .wrap{
+
+  height: 100%;
+  width: 50%;
+  max-width: initial;
+  float: left;
+  position: relative;
+}
+#title .wrap span{
+  
+  display: none;
+}
+
+#title ul{
+  height: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+#title ul li{
+  font-size: 80px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #3a3a1f;
+  letter-spacing: 1.3px;
+  display: flex;
+  align-items: center;
+  width: 450px;
+}
+#title .wrap ul > span{
+  /*! width: 20px; */
+  /*! height: 20px; */
+  background-color: #3a3a1f;
+  display: block;
+   animation: titleUp;
+   animation-duration: 0.5s;
+  position: absolute;
+  border-radius: 50%;
+}
+#title ul li.t_1 p:nth-child(1){
+   animation: titleUp;
+    animation-duration: 1.1s;
+}
+#title ul li.t_1 p:nth-child(2){
+   animation: titleUp;
+    animation-duration: 0.8s;
+}
+#title ul li.t_1 p:nth-child(3){
+   animation: titleUp;
+    animation-duration: 1s;
+}
+#title ul li.t_1 p:nth-child(4){
+     animation: titleUp;
+    animation-duration: 0.5s;
+     position: relative;
+}
+#title ul li.t_1 p:nth-child(4)::before{
+  content: "";
+  
+  width: 20px;
+  height: 20px;
+  background-color: #3a3a1f;
+  display: block;
+  animation: titleUp;
+  animation-duration: 0s;
+  animation-duration: 0.5s;
+  position: absolute;
+  border-radius: 50%;
+  top: -16px;
+  left: 16px;
+  animation: aniB 0.6s linear 0s infinite alternate;
+}
+#title ul li.t_1 p:nth-child(5){
+       animation: titleUp;
+    animation-duration: 1s;
+}
+#title ul li.t_1 p:nth-child(6){
+       animation: titleUp;
+    animation-duration: 1.7s;
+}
+#title ul li.t_2 p:nth-child(1){
+       animation: titleUp;
+   animation-duration: 1.7s;
+}
+#title ul li.t_2 p:nth-child(2){
+       animation: titleUp;
+   animation-duration: 1.4s;
+}
+#title ul li.t_2 p:nth-child(3){
+       animation: titleUp;
+   animation-duration: 1.1s;
+}
+#title ul li.t_2 p:nth-child(4){
+       animation: titleUp;
+   animation-duration: 0.8s;
+}
+#title ul li.t_2 p:nth-child(5){
+       animation: titleUp;
+   animation-duration: 0.5s;
+}
+#title ul li.t_2 p:nth-child(6){
+       animation: titleUp;
+   animation-duration: 0.8s;
+}
+#title ul li.t_2 p:nth-child(7){
+       animation: titleUp;
+   animation-duration: 1.1s;
+}
+#title ul li.t_2 p:nth-child(8){
+       animation: titleUp;
+   animation-duration: 1.4s;
+}
+#title ul li.t_2 p:nth-child(9){
+       animation: titleUp;
+   animation-duration: 1.7s;
+}
+.titleUp{
+  animation-name: titleUp;
+  animation-fill-mode: forwards;
+  animation-direction: reverse;
+}
+@keyframes titleUp{
+  0%{
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100%{
+    transform: translateY(0px);
+    opacity: 1; 
+  }
+}
+
+#title .circles{
+  width: 50%;
+  height: 100%;
+  float: right;
+  position: relative;
+  overflow: hidden;
+
+}
+
+#title .circles ul{
+
+}
+#title .circles li.circle{
+
+}
+
+#title .circles li.circle:nth-child(1){
+  
+  width: 600px;
+  height: 600px;
+  background-color: #4b86b1;
+  border-radius: 50%;
+  position: absolute;
+  top: 12%;
+  left: 13%;
+  animation: rise 2s linear 0s infinite alternate;
+  filter: blur(20px);
+}
+#title .circles li.circle:nth-child(2){
+  
+  width: 600px;
+  height: 600px;
+  background-color: #eb766f;
+  border-radius: 50%;
+  position: absolute;
+  top: 11%;
+  right: 17%;
+  animation: rise 2.5s linear 0s infinite alternate;
+  filter: blur(20px);
+}
+#title .circles li.circle:nth-child(3){
+  
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  position: absolute;
+  top: 16%;
+  right: 23%;
+  animation: rise 3s linear 0s infinite alternate;
+  filter: blur(20px);
+  background-color: #f5c14f;
+}
+
+
+@keyframes rise {
+ 0% {
+  transform:translateX(0);
+   width: 600px;
+ }
+ 100% {
+  transform:translateY(-30px);
+   width: 580px;
+ }
+}
+@keyframes aniB {
+ 0% {
+  transform:translateX(0);
+ }
+ 100% {
+  transform:translateY(-5px);
+ }
+}
